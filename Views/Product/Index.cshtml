@@ -1,0 +1,241 @@
+﻿@model List<WebApplication2.Models.Product>;
+@if (Model.Count > 0)
+{
+    <div class="product-model">
+        <div class="container">
+
+            <h2>OUR PRODUCTS</h2>
+
+            <div class="row">
+                <div class="col-md-9 product-model-sec">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            if (item.Count > 0)
+                            {
+
+
+                            <div class="col-md-4">
+                                <a asp-action="Details" asp-route-id="@item.ID">
+                                    <div>
+                                        <div class="more-product"><span> </span></div>
+                                        <div class="product-img b-link-stripe b-animate-go  thickbox">
+                                            <img src="/images/@item.Img_path" style="display:inline-block; width:245px;height:160px;" class="img-responsive" alt="" />
+                                            <div class="b-wrapper">
+                                                <h4 class="b-animate b-from-left  b-delay03">
+                                                    <button class="btns"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick View</button>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="product-info simpleCart_shelfItem">
+                                    <div class="product-info-cust prt_name">
+                                        <h4 style="font-size:20px; color: #81967a;">@item.Name</h4>
+                                        <p style="font-size:14px;">ID: @item.ID</p>
+                                        <span class="item_price">Price: $@item.Price</span>
+                                        @*<input type="number" style="padding:0; font-size:15px;" class="item_quantity" value="" />*@
+                                        <p style="font-size:14px;">Count: @item.Count</p>
+
+                                    <form asp-controller="Demo" asp-action="AddToCart"  asp-route-id="@item.ID"  method="post">
+                                       
+                                        <input type="number" name="amount" value="1" min="1" max="@item.Count" style=" height: 15px; width: 100px; display: block; margin-bottom: 4px;" />
+                                        <input type="submit" value="Add To Cart" class="btn btn-info d-block">
+                                    </form>
+
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                            </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="rsidebar span_1_of_left col-md-3">
+                    <!--Discount filter -->
+                    <section class="sky-form">
+                        <div class="product_right">
+                            <h4 class="m_5 "><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Discount</h4>
+                            <div class="tab1">
+                                <ul class="place">
+                                    <li class="sort">Less than 50%</li>
+                                    <li class="by"><img src="images/do.png" alt=""></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                                <div class="single-bottom">
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="10"><p>up to - 10%</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="20"><p>up to - 20%</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="30"><p>up to - 30%</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="40"><p>up to - 40%</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="50"><p>up to - 50%</p></a>
+                                </div>
+                            </div>
+                            <div class="tab2">
+                                <ul class="place">
+                                    <li class="sort">More than 50%</li>
+                                    <li class="by"><img src="images/do.png" alt=""></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                                <div class="single-bottom">
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="60"><p>up to - 60%</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="70"><p>up to - 70%</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="80"><p>up to - 80%</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByDiscount" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodisc="90"><p>up to - 90%</p></a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                    <!--Price Filter-->
+                    <section class="sky-form">
+                        <div class="product_right">
+                            <h4 class="m_5 "><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Price</h4>
+                            <div class="tab3">
+                                <ul class="place">
+                                    <li class="sort">Price</li>
+                                    <li class="by"><img src="images/do.png" alt=""></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                                <div class="single-bottom">
+                                    <a asp-controller="Product" asp-action="SearchByLessthanprice" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodprice="0" asp-route-Prodp="50"><p>  1 $  to 50 $</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByLessthanprice" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodprice="50" asp-route-Prodp="100"><p> 50 $ to 100 $</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByLessthanprice" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodprice="100" asp-route-Prodp="200"><p> 100 $ to 200 $</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByLessthanprice" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodprice="200" asp-route-Prodp="300"><p> 200 $ to 300 $</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByLessthanprice" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodprice="300" asp-route-Prodp="500"><p> 300 $ to 500 $</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByGreaterThanPrice" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-Prodprice="500"><p> More than 500 $</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!--Brand Filter-->
+                    <section class="sky-form">
+                        <div class="product_right">
+                            <h4 class="m_5 "><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Brand</h4>
+                            <div class="tab4">
+                                <ul class="place">
+                                    <li class="sort">Brand</li>
+                                    <li class="by"><img src="images/do.png" alt=""></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                                <div class="single-bottom">
+                                    <a asp-controller="Product" asp-action="SearchByBrand" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdBrand="Ashley"><p> Ashley</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByBrand" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdBrand="Atwater Living"><p>Atwater Living</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByBrand" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdBrand="Baxton Studio"><p>Baxton Studio</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByBrand" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdBrand="Dorel"><p>Dorel</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByBrand" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdBrand="Furinno"><p>Furinno</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByBrand" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdBrand="Surya"><p>Surya</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!--Color Filter-->
+                    <section class="sky-form">
+                        <div class="product_right">
+                            <h4 class="m_5 "><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Color</h4>
+                            <div class="tab5">
+                                <ul class="place">
+                                    <li class="sort">Color</li>
+                                    <li class="by"><img src="images/do.png" alt=""></li>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                                <div class="single-bottom">
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="Green"><p>Green</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="Yollow"><p>Yollow</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="Red"><p>Red</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="Blue"><p>Blue</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="Black"><p>Black</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="Gray"><p>Gray</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="Orange"><p> Orange</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="Selver"><p>Selver</p></a>
+                                    <a asp-controller="Product" asp-action="SearchByColor" asp-route-Cat_id="@Model[0].Cat_ID" asp-route-ProdColor="White"><p>White</p></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+              </div>
+            </div>
+
+        </div>
+    </div>
+}
+else
+{
+
+    <div class="container">
+
+        <p style="color:#026466;" class="text-center mt-5"> THere No Products Fot This Filter</p>
+        <a href="/" class="btn btn-info">Back To List</a>
+    </div>
+}
+
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+
+<script>
+    $(document).ready(function () {
+        $(".tab1 .single-bottom").hide();
+        $(".tab2 .single-bottom").hide();
+        $(".tab3 .single-bottom").hide();
+        $(".tab4 .single-bottom").hide();
+        $(".tab5 .single-bottom").hide();
+
+        $(".tab1 ul").click(function () {
+            $(".tab1 .single-bottom").slideToggle(300);
+            $(".tab2 .single-bottom").hide();
+            $(".tab3 .single-bottom").hide();
+            $(".tab4 .single-bottom").hide();
+            $(".tab5 .single-bottom").hide();
+        })
+        $(".tab2 ul").click(function () {
+            $(".tab2 .single-bottom").slideToggle(300);
+            $(".tab1 .single-bottom").hide();
+            $(".tab3 .single-bottom").hide();
+            $(".tab4 .single-bottom").hide();
+            $(".tab5 .single-bottom").hide();
+        })
+        $(".tab3 ul").click(function () {
+            $(".tab3 .single-bottom").slideToggle(300);
+            $(".tab4 .single-bottom").hide();
+            $(".tab5 .single-bottom").hide();
+            $(".tab2 .single-bottom").hide();
+            $(".tab1 .single-bottom").hide();
+        })
+        $(".tab4 ul").click(function () {
+            $(".tab4 .single-bottom").slideToggle(300);
+            $(".tab5 .single-bottom").hide();
+            $(".tab3 .single-bottom").hide();
+            $(".tab2 .single-bottom").hide();
+            $(".tab1 .single-bottom").hide();
+        })
+        $(".tab5 ul").click(function () {
+            $(".tab5 .single-bottom").slideToggle(300);
+            $(".tab4 .single-bottom").hide();
+            $(".tab3 .single-bottom").hide();
+            $(".tab2 .single-bottom").hide();
+            $(".tab1 .single-bottom").hide();
+        })
+    });
+</script>
+<script type='text/javascript'>
+    $(window).load(function () {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 400000,
+            values: [8500, 350000],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+
+    });
+</script>

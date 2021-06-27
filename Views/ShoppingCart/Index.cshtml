@@ -1,0 +1,66 @@
+﻿@model WebApplication2.ViewModels.ShoppingcartViewModel
+
+<h2>Shopping Cart:  </h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Selected Amount</th>            
+            <th>Product Name </th>
+            <th class="text-right">Price</th>
+            <th class="text-right">Subtotal</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.shoppingcart.shoppingCartItems)
+        {
+            
+        <tr>
+            <td class="text-center">
+                <img width="60px" height="60px" src="/images/@item.furntire.Img_path" />
+            </td>
+            <td class="text-center">
+                <div>
+                    <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-furntireId="@item.furntire.ID" class="btn btn-primary" alt=""> - </a>
+                     @item.Amount
+
+                      <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-furntireId="@item.furntire.ID" class="btn btn-primary" alt=""> + </a>
+
+            </div>
+
+            </td>
+
+            <td class="text-left">@item.furntire.Name</td>
+            <td class="text-right">@item.furntire.Price.ToString("c")</td>
+            <td class="text-right">
+                @((item.Amount * item.furntire.Price).ToString("c"))
+            </td>
+        </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4" class="text-right">Total</td>
+            <td class="text-right">@Model.shoppingcartTotal.ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    @if (Model.shoppingcart.shoppingCartItems.Count > 0) {
+
+    <a class="btn btn-primary" asp-controller="ShoppingCart" asp-action="ClearCart" style="margin:5px;">Clear Cart</a>
+    
+    <a class="btn btn-primary" asp-controller="Order" asp-action="Checkout" asp-route-products="Model.shoppingcart.shoppingCartItems" asp-route-totalPrice="@Model.shoppingcartTotal">Place Order </a>
+    
+    }
+    <br />
+    @*<p class="button">
+        <a class="btn btn-primary"
+           asp-controller="Home"
+           asp-action="Index">Return to Home </a>
+    </p>*@
+
+</div>

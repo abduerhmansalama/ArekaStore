@@ -1,0 +1,63 @@
+﻿@model List<CatVM>
+<!--<nav class="navbar navbar-inverse">
+    <div class="container-fluid">-->
+@*<div class="navbar-header">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>*@
+<!--<ul class="nav navbar-nav">
+            foreach (var item in Model)
+            {
+
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        item.Name
+                        <span class="caret"></span>
+                    </a>
+                    //
+
+
+                    //
+                    <ul class="dropdown-menu">
+                        foreach (var sub in item.SubCat)
+                        {
+                            <li>
+                                <a asp-controller="Product"
+                                   asp-action="CatProduct"
+                                   asp-route-id="item.Id">
+                                    sub.Name
+                                </a>
+                            </li>
+
+                        }
+                    </ul>
+                </li>
+
+            }
+
+        </ul>
+    </div>
+</nav>-->
+@foreach (var item in Model) { 
+    <li class="grid">
+<a class="color2">@item.Name</a>
+<div class="megapanel">
+    <div class="row">
+        <div class="col1">
+            <div class="h_nav">
+                @foreach (var sub in item.SubCat)
+                {
+                <h4>
+                    <a asp-controller="Product"
+                       asp-action="index"
+                       asp-route-id="@sub.Id">
+                        @sub.Name
+                    </a>
+                </h4>
+
+                }
+
+            </div>
+        </div>
+        </li>
+}

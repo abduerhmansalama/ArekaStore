@@ -1,0 +1,295 @@
+﻿@*@{
+        ViewData["Title"] = "Home Page";
+    }
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>*@
+
+@{ ViewData["Title"] = "Home Page"; }
+@model WebApplication2.Models.HomeViewModel
+<!--image Scrool-->
+<div class="container">
+    <div class="slider">
+        <ul class="rslides" id="slider1">
+            <li><img src="~/images/banner2.jpg" alt=""></li>
+            <li><img src="~/images/banner1.jpg" alt=""></li>
+            <li><img src="~/images/banner3.jpg" alt=""></li>
+        </ul>
+    </div>
+</div>
+<!--Categries-->
+<div class="new" id="Cat">
+    <div class="Categories-Section">
+        <div class="container">
+            <h4>Categories</h4>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a asp-controller="Product" asp-action="Index" asp-route-id="">
+                        <div class="Category">
+                            <img src="./images/BedRoom.jpg">
+                            <div class="overly"><h4>Bed Rooms</h4></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a asp-controller="Product" asp-action="Index" asp-route-id="">
+                        <div class="Category">
+                            <img src="./images/livingroom.jpg">
+                            <div class="overly"><h4>Living Rooms</h4></div>
+
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a asp-controller="Product" asp-action="Index" asp-route-id="">
+                        <div class="Category">
+                            <img src="./images/diningroom.jpg">
+
+                            <div class="overly"><h4>Dinning Rooms</h4></div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a asp-controller="Product" asp-action="Index" asp-route-id="">
+                        <div class="Category">
+                            <img src="./images/dressingroom.jpg">
+
+                            <div class="overly"><h4>Dressing Rooms</h4></div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a asp-controller="Product" asp-action="Index" asp-route-id="">
+                        <div class="Category">
+                            <img src="./images/kidsroom.jpg">
+
+                            <div class="overly"><h4>Kids Rooms</h4></div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a asp-controller="Product" asp-action="Index" asp-route-id="">
+                        <div class="Category">
+                            <img src="./images/chaires.jpg">
+
+                            <div class="overly"><h4>Chairs</h4></div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a asp-controller="Product" asp-action="Index" asp-route-id="">
+                        <div class="Category">
+                            <img src="./images/accessories.jpg">
+
+                            <div class="overly"><h4>Accessories</h4></div>
+
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <a asp-controller="Product" asp-action="Index" asp-route-id="">
+                        <div class="Category">
+                            <img src="./images/office.jpg">
+
+                            <div class="overly"><h4>Desk Rooms </h4></div>
+
+                        </div>
+                    </a>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--First Section-->
+<div class="top-sellers">
+    <div class="container">
+        <h3>TOP - SELLERS</h3>
+        <div class="seller-grids">
+            @if (Model.TopSellers.ToList().Count == 0)
+            {
+<p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:30px;text-align:center">There is no product Right Now</p> }
+            else
+            {
+@for (int i = 0; i < Model.TopSellers.ToList().Count; i++)
+{
+
+<div class="col-md-3 seller-grid">
+    <a asp-controller="Product" asp-action="Details" asp-route-id="@Model.TopSellers.ToList()[i].ID"><img src="/images/@Model.TopSellers.ToList()[i].Img_path" alt="" /></a>
+    <h4><a asp-controller="Product" asp-action="Details" asp-route-id="@Model.TopSellers.ToList()[i].ID">Name : @Model.TopSellers.ToList()[i].Name</a></h4>
+    <span>ID: @Model.TopSellers.ToList()[i].ID</span>
+    <p>Price : @Model.TopSellers.ToList()[i].Price</p>
+</div>}}
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<!--Seconed Section-->
+<div class="top-sellers">
+    <div class="container">
+        <h3>Tabels</h3>
+        <div class="seller-grids">
+
+            @if (Model.Tabels.ToList().Count == 0)
+            {
+<p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:30px;text-align:center">There is no product Right Now</p> }
+else
+{
+@for (int i = 0; i < Model.Tabels.ToList().Count; i++)
+{
+
+<div class="col-md-3 seller-grid">
+    <a href=""><img src="/images/@Model.Tabels.ToList()[i].Img_path" alt="" /></a>
+    <h4><a href="products.html">Name : @Model.Tabels.ToList()[i].Name</a></h4>
+    <span>ID: @Model.Tabels.ToList()[i].ID</span>
+    <p>Price : @Model.Tabels.ToList()[i].Price</p>
+</div>  }}
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--Third Section-->
+<div class="top-sellers">
+    <div class="container">
+        <h3>Beds</h3>
+        <div class="seller-grids">
+
+            @if (Model.Beds.ToList().Count == 0)
+            {<p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:30px;text-align:center">There is no product Right Now</p> }
+            else
+            {
+@for (int i = 0; i < Model.Beds.ToList().Count; i++)
+{
+
+<div class="col-md-3 seller-grid">
+    <a href=""><img src="/images/@Model.Beds.ToList()[i].Img_path" alt="" /></a>
+    <h4><a href="products.html">Name : @Model.Beds.ToList()[i].Name</a></h4>
+    <span>ID: @Model.Beds.ToList()[i].ID</span>
+    <p>Price : @Model.Beds.ToList()[i].Price</p>
+</div>  }}
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--Fourth Section-->
+<div class="top-sellers">
+    <div class="container">
+        <h3>Seats</h3>
+        <div class="seller-grids">
+            @if (Model.Seating.ToList().Count == 0)
+            {
+<p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:30px;text-align:center">There is no product Right Now</p> }
+            else
+            {
+@for (int i = 0; i < Model.Seating.ToList().Count; i++)
+{
+
+<div class="col-md-3 seller-grid">
+    <a href=""><img src="/images/@Model.Seating.ToList()[i].Img_path" alt="" /></a>
+    <h4><a asp-controller="Product" asp-action="Details" asp-route-id="@Model.Seating.ToList()[i].ID">Name : @Model.Seating.ToList()[i].Name</a></h4>
+    <span>ID: @Model.Seating.ToList()[i].ID</span>
+    <p>Price : @Model.Seating.ToList()[i].Price</p>
+</div>                }            }
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--TopSealler Scrool-->
+@*<div class="recommendation">
+        <div class="container">
+            <div class="recmnd-head">
+                <h3>RECOMMENDATIONS FOR YOU</h3>
+            </div>
+            <div class="bikes-grids">
+                <ul id="flexiselDemo1">
+                    @foreach (var TopP in Model.TopSellers)
+                    {
+                        <li>
+                            <a href="products.html"><img src=@TopP.Img_path alt="" /></a>
+                            <h4><a href="products.html">@TopP.Name</a></h4>
+                            <p>ID: @TopP.ID</p>
+                        </li>
+                    }
+                </ul>
+                <script type="text/javascript">
+                    $(window).load(function () {
+                        $("#flexiselDemo1").flexisel({
+                            visibleItems: 5,
+                            animationSpeed: 1000,
+                            autoPlay: true,
+                            autoPlaySpeed: 3000,
+                            pauseOnHover: true,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                                portrait: {
+                                    changePoint: 480,
+                                    visibleItems: 1
+                                },
+                                landscape: {
+                                    changePoint: 640,
+                                    visibleItems: 2
+                                },
+                                tablet: {
+                                    changePoint: 768,
+                                    visibleItems: 3
+                                }
+                            }
+                        });
+                    });
+                </script>
+                <script type="text/javascript" src="~/js/jquery.flexisel.js"></script>
+            </div>
+        </div>
+    </div>*@
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary JavaScript plugins) -->
+    <script type='text/javascript' src="js/jquery-1.11.1.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <!--//theme-style-->
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat|Raleway:400,200,300,500,600,700,800,900,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
+    <!-- start menu -->
+    <link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/megamenu.js"></script>
+    <script>$(document).ready(function () { $(".megamenu").megamenu(); });</script>
+    <script src="js/menu_jquery.js"></script>
+    <script src="js/simpleCart.min.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script>
+    // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 1
+            $("#slider1").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+            });
+        });</script>
+
+}
+

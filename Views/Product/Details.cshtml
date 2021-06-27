@@ -1,0 +1,136 @@
+﻿@model WebApplication2.Models.Product;
+<div class="single-sec">
+    <div class="container">
+        <!-- start content -->
+        <div class="col-md-9 det">
+
+
+            <!--Product IMG-->
+            <div class="single_left">
+                <div class="grid images_3_of_2">
+                    <ul id="etalage">
+                        <li>  
+                            <a href="optionallink.html">
+                                <img class="etalage_thumb_image" src="/images/@Model.Img_path" class="img-responsive" />
+                                <img class="etalage_source_image" src="/images/@Model.Img_path"  class="img-responsive" title="" />
+                            </a>
+                        </li>
+                        <li>
+                            <img class="etalage_thumb_image" src="/images/@Model.Img_path"class="img-responsive" />
+                            <img class="etalage_source_image" src="/images/@Model.Img_path" class="img-responsive" title="" />
+                        </li>
+                        <li>
+                            <img class="etalage_thumb_image" src="/images/@Model.Img_path" class="img-responsive" />
+                            <img class="etalage_source_image" src="/images/@Model.Img_path" class="img-responsive" />
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+
+            <!--Details-->
+            <div class="single-right">
+                <h3>@Model.Name</h3>
+                <div class="id"><h4>ID:@Model.ID</h4></div>
+
+               <!--Rating-->
+                @*<form action="" class="sky-form">
+                    <fieldset>
+                        <section>
+                            <div class="rating">
+                                <input type="radio" name="stars-rating" id="stars-rating-5">
+                                <label for="stars-rating-5"><i class="icon-star"></i></label>
+                                <input type="radio" name="stars-rating" id="stars-rating-4">
+                                <label for="stars-rating-4"><i class="icon-star"></i></label>
+                                <input type="radio" name="stars-rating" id="stars-rating-3">
+                                <label for="stars-rating-3"><i class="icon-star"></i></label>
+                                <input type="radio" name="stars-rating" id="stars-rating-2">
+                                <label for="stars-rating-2"><i class="icon-star"></i></label>
+                                <input type="radio" name="stars-rating" id="stars-rating-1">
+                                <label for="stars-rating-1"><i class="icon-star"></i></label>
+                                <div class="clearfix"></div>
+                            </div>
+                        </section>
+                    </fieldset>
+                </form>*@
+
+                <div class="cost">
+                    <div class="prdt-cost">
+                        <ul>
+                            <li>Sellling Price:</li>
+                            <li class="active">$@Model.Price</li>
+
+                            <form asp-controller="Demo" asp-action="AddToCart" asp-route-id="@Model.ID" asp-route-amount="1" method="post">
+                                <input type="submit" value="Bay Now" class="btn btn-info d-block">
+                            </form>
+
+
+                        </ul>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+                <div class="item-list">
+                    <ul>
+                        <li>Material: @Model.Fabric</li>
+                        <li>Color: @Model.Color</li>
+                       
+                        <li>Brand: @Model.Brand</li>
+                    </ul>
+                </div>
+                <div class="single-bottom1">
+                    <h6>Details</h6>
+                    <p>@Model.Discription </p>
+                </div>
+            </div>
+
+
+        <div class="clearfix"></div>
+        </div>
+        <div class="rsidebar span_1_of_left">
+     
+    <div class="clearfix"></div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <link href="~/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary JavaScript plugins) -->
+    <script type='text/javascript' src="~/js/jquery-1.11.1.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="~/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <!--//theme-style-->
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat|Raleway:400,200,300,500,600,700,800,900,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
+    <!-- start menu -->
+    <link href="~/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="~/js/megamenu.js"></script>
+    <script>$(document).ready(function () { $(".megamenu").megamenu(); });</script>
+    <script src="~/js/menu_jquery.js"></script>
+    <script src="~/js/simpleCart.min.js"></script>
+    <link href="~/css/form.css" rel="stylesheet" type="text/css" media="all" />
+    <!--etalage-->
+    <link rel="stylesheet" href="~/css/etalage.css">
+    <script src="~/js/jquery.etalage.min.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+
+            $('#etalage').etalage({
+                thumb_image_width: 300,
+                thumb_image_height: 400,
+                source_image_width: 900,
+                source_image_height: 1200,
+                show_hint: true,
+                click_callback: function (image_anchor, instance_id) {
+                    alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+                }
+            });
+
+        });
+    </script>
+
+}

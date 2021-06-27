@@ -1,0 +1,73 @@
+﻿@model Order
+
+
+<form asp-action="Checkout" method="Post" class="form-horizontal" role="form">
+     
+    
+
+    
+    <br />
+    <br />
+    <div class="form-group">
+        <label asp-for="FirstName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input style="font-style:normal;font-size:15px;" asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input style="font-style:normal;font-size:15px;" asp-for="LastName" class="form-control" />
+            <span asp-validation-for="LastName" class="danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input style="font-style:normal;font-size:15px;" asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="City" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input style="font-style:normal;font-size:15px;" asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="State" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input style="font-style:normal;font-size:15px;" asp-for="State" class="form-control" />
+            <span asp-validation-for="State" class="danger"></span>
+        </div>
+    </div>
+    @*<div class="form-group">
+        <label asp-for="ZipCode" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input style="font-style:normal;font-size:15px;" asp-for="ZipCode" class="form-control" />
+            <span asp-validation-for="ZipCode" class="danger"></span>
+        </div>
+    </div>*@
+    <div class="form-group">
+        <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input  style=" display: inline-block; font-size: 15px; vertical-align: middle; background-color: #e7ecef; border: none; border-bottom: 5px solid #B2DBBF; transition: border-bottom .75s; color: #000; padding: 10.5px; height: 35px;"  asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="danger"></span>
+        </div>
+    </div>
+    <div style="margin-left:600px;">
+        <p style="font-family:'Times New Roman', Times, serif;font-size:25px;"> <u>Total Price</u></p>
+        <br />
+        <div style="font-family:'Times New Roman', Times, serif;font-size:19px;">@ViewBag.toalprice.00 $</div>
+        <br />
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5" style="margin-left:600px;">
+            <input type="submit" class="btn btn-primary" value="Complete Order" />
+        </div>
+    </div>
+</form>

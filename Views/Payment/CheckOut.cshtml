@@ -1,0 +1,42 @@
+﻿
+@model WebApplication2.ViewModels.CreatePaymentModel
+
+@{
+    ViewData["Title"] = "Payment";
+
+}
+    <div style="margin:5px auto">
+        <div class='container'>
+            <div class="card mx-auto col-md-5 col-8 mt-3 p-0">
+               
+                <form method="post">
+                    <div class="card-body">
+                        <h3 class="text-muted" >please Enter Your payment details</h3>
+                        <p> Your total price : @ViewBag.tot</p>
+                        <div>
+                            <input asp-for="@Model.Number" class="cal col-5 p-4" type="text" placeholder="Card Number">
+                        </div>
+                        <div>
+                            <input asp-for="@Model.Cvv" class="cal col-5 p-4" type="text" placeholder=" Enter 3 digets confirmation code (Cvv) ">
+                        </div>
+                        <div>
+                            <input asp-for="@Model.ExpireYear" class="card-expiry-year col-5 p-4" type="text" placeholder="Card Expire Year">
+                        </div>
+                        <div>
+                            <input asp-for="@Model.ExpireMonth" class='form-control card-cvc'  placeholder="Card Expire Month" 311' size='4' type='text'>
+                        </div>
+                    </div>
+                    <div class="footer text-center p-4">
+                        <div class="col-lg-12 col-12 p-4">
+                            <button asp-controller="OrderV2" asp-action="SubmitOrder" asp-route-fname="@ViewBag.fname" asp-route-lname="@ViewBag.lname" asp-route-State="@ViewBag.State" asp-route-Address="@ViewBag.Address" asp-route-City="@ViewBag.City" asp-route-PhoneNumber="@ViewBag.PhoneNumber" asp-route-TotalPrice="@ViewBag.tot" class="order btn"> Order Now </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    
+   @*</body>
+</html>*@
+

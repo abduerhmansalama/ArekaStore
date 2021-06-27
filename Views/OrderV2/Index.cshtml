@@ -1,0 +1,100 @@
+﻿@model WebApplication2.Controllers.OrderModel;
+
+@* breadCrumb *@
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Home</a></li>
+        <li class="active">Order</li>
+    </ol>
+
+    @* start order form *@
+    <div class="registration">
+        <h2>Complete Order</h2>
+        <div class="registration_form">
+            <form asp-controller="OrderV2" asp-action="Test" asp-route-totalprice="@Model.TotalPrice"  method="post" class="log">
+                <div>
+                    <label>
+                        <input placeholder="first name:" type="text" tabindex="1" required autofocus name="FirstName" style="width:50%">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input placeholder="last name:" type="text" tabindex="2" required autofocus name="LastName" style="width:50%">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input placeholder="Mobile:" type="tel" tabindex="3" required name="PhoneNumber" style="width:50%">
+                    </label>
+                </div>
+
+                @* address in detail *@
+                <div class="contact-right">
+                    <h5>Address:</h5>
+                    <div>
+                        <label class="ml-2">
+                            <input class="form-control mb-2 mr-sm-2" name="State" autofocus="" required="" tabindex="1" type="text" placeholder="State:" style="margin-left:20px;">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="City:" type="text" tabindex="2" required="" autofocus="" name="City" class="form-control mb-2 mr-sm-2" style="margin-left:20px;">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input placeholder="Street:" type="text" tabindex="3" required="" name="Address" class="form-control mb-3 mr-sm-2" style="margin-left:20px;">
+                        </label>
+                    </div>
+                </div>
+
+                @* order details *@
+                <h5>Order Details:</h5>
+                <div class="item-list">
+                    <ul>
+                        @foreach (var item in Model.shoppingProducts)
+                        {
+                            <li>
+                                <h5>@item.product.Name</h5>
+                                <ul>
+                                    <li><h5>Price: @item.product.Price</h5></li>
+                                    <li><h5>Discount:@item.product.Discount</h5></li>
+                                    <li><h5>Count: @item.Amount</h5></li>
+                                </ul>
+                            </li>
+}
+                    </ul>
+                </div>
+
+                @* price details *@
+                <div class="price-details">
+                    <h5>Price Details</h5>
+                    <span>Total</span>
+                    <span class="total">@Model.Total</span>
+                    <span>Discount</span>
+                    <span class="total">@Model.Discount</span>
+                    <span>Delivery Charges</span>
+                    <span class="total">100</span>
+                    <div class="clearfix"></div>
+                </div>
+                <h4 class="last-price">TOTAL</h4>
+                <span class="total final">@Model.TotalPrice</span>
+                <div class="clearfix"></div>
+
+                @* payment *@
+                <h5>Payment:</h5>
+                <div class="sky_form1">
+                    <ul>
+                        <li><label class="radio left"><input type="radio" checked=""><i></i>Stripe</label></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+                <div>
+                    
+                    @*<a asp-controller="Payment" asp-action="CheckOut" asp-route-total="@Model.TotalPrice"> Payment</a>*@
+                    <input type="submit" value="Payment">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

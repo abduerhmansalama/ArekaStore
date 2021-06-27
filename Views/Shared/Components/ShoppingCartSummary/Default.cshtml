@@ -1,0 +1,30 @@
+﻿@*@model WebApplication2.ViewModels.ShoppingcartViewModel
+
+    @{var x = Model.shoppingcart.GetShoppingCartTotal(); }
+
+    @if (Model.shoppingcart.shoppingCartItems.Count > 0)
+    {
+        <span class="simpleCart_total">$@Model.shoppingcart.GetShoppingCartTotal()</span>
+        <span id="simpleCart_quantity" class="simpleCart_quantity">@Model.shoppingcart.shoppingCartItems.Count</span>
+    }*@
+
+@*@model WebApplication2.ViewModels.ShoppingcartViewModel*@
+@model List<WebApplication2.Models.ShoppingProduct>;
+@if (Model.Count==0)
+{
+    <img src="~/images/bag.png" alt="">
+    <br /><span></span>
+    <br />
+    <h6> EmptyCart </h6>
+
+}
+
+@if (Model.Count>0)
+{
+
+    @*<span style="border-top:2px"> Total : $@Model.shoppingcart.GetShoppingCartTotal()</span>*@
+    @*<br />
+        <span id="simpleCart_quantity">@Model.shoppingcart.shoppingCartItems.Count</span>*@
+    <a asp-controller="Demo" asp-action="Index"> <img src="~/images/bag.png" alt=""></a>
+
+}

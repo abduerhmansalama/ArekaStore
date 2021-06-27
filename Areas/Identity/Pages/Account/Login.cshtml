@@ -1,0 +1,74 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<div class="login_sec">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Login</li>
+        </ol>
+        <h2>Login</h2>
+        <div class="col-md-6 log">
+            <p>Welcome, please enter the following to continue.</p>
+            @*<p>If you have previously Login with us, <span>click here</span></p>*@
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <h5>User Name:</h5>
+                <input style="font-style:normal;font-size:15px;"  asp-for="Input.Email" type="text" value="">
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <h5>Password:</h5>
+                <input style="font-style:normal;font-size:15px;"  asp-for="Input.Password" type="password" value="">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <input type="submit" value="Login">
+                @*<a href="#">Forgot Password ?</a>*@
+            </form>
+        </div>
+        <div class="col-md-6 login-right">
+            <h3>NEW REGISTRATION</h3>
+            <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+            <a class="acount-btn" asp-page="/Account/Register">Create an Account</a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+
+<!--<div class="col-md-10 offset-md-1">
+    <section>-->
+        @*<div class="login-form-icon">
+            <i class="fas fa-user-circle fa-5x text-secondary"></i>
+        </div>*@
+        @*fas fa-user-circle fa-9x text-secondary*@
+        <!--<form id="account" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+            </div>
+        </form>
+
+    </section>
+</div>-->
+
+
+ 

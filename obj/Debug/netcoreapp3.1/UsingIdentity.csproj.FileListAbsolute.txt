@@ -1,0 +1,7 @@
+C:\Users\Noha\Downloads\UsingIdentity-master\UsingIdentity-master\UsingIdentity\obj\Debug\netcoreapp3.1\UsingIdentity.AssemblyInfoInputs.cache
+C:\Users\Noha\Downloads\UsingIdentity-master\UsingIdentity-master\UsingIdentity\obj\Debug\netcoreapp3.1\UsingIdentity.AssemblyInfo.cs
+C:\Users\Noha\Downloads\UsingIdentity-master\UsingIdentity-master\UsingIdentity\obj\Debug\netcoreapp3.1\UsingIdentity.csproj.CoreCompileInputs.cache
+C:\Users\Noha\Downloads\UsingIdentity-master\UsingIdentity-master\UsingIdentity\obj\Debug\netcoreapp3.1\UsingIdentity.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Noha\Downloads\UsingIdentity-master\UsingIdentity-master\UsingIdentity\obj\Debug\netcoreapp3.1\UsingIdentity.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Noha\Downloads\UsingIdentity-master\UsingIdentity-master\UsingIdentity\obj\Debug\netcoreapp3.1\UsingIdentity.RazorAssemblyInfo.cache
+C:\Users\Noha\Downloads\UsingIdentity-master\UsingIdentity-master\UsingIdentity\obj\Debug\netcoreapp3.1\UsingIdentity.RazorAssemblyInfo.cs

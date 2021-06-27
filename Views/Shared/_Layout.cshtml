@@ -1,0 +1,204 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using WebApplication2.Areas.Identity.Data
+
+@inject SignInManager<UsingIdentityUser> SignInManager
+@inject UserManager<UsingIdentityUser> UserManager
+
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Furnyish Store a Ecommerce Category Flat Bootstarp Responsive Website Template | Home :: w3layouts</title>
+    <link href="~/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary JavaScript plugins) -->
+    <script type='text/javascript' src="~/js/jquery-1.11.1.min.js"></script>
+    <!-- Custom Theme files -->
+    <!-- Custom Theme files -->
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Furnyish Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat|Raleway:400,200,300,500,600,700,800,900,100' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Aladin' rel='stylesheet' type='text/css'>
+    <!-- start menu -->
+    <link href="~/css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="~/js/megamenu.js"></script>
+    <script>$(document).ready(function () { $(".megamenu").megamenu(); });</script>
+    <script src="~/js/menu_jquery.js"></script>
+    <script src="~/js/simpleCart.min.js"></script>
+    <script src="~/js/responsiveslides.min.js"></script>
+    @*<script>
+            // You can also use "$(window).load(function() {"
+            $(function () {
+                // Slideshow 1
+                $("#slider1").responsiveSlides({
+                    auto: true,
+                    nav: true,
+                    speed: 500,
+                    namespace: "callbacks",
+                });
+            });
+        </script>*@
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous"> -->
+    @*<link href="~/css/style.css" rel='stylesheet' type='text/css' />*@
+    <link href="~/css/index.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- header -->
+    <div class="top_bg">
+        <div class="container">
+            <div class="header_top-sec">
+                <div class="top_right">
+                    <ul>
+                        <li><a href="#about">About US</a></li>|
+                        <li><a href="/ContactUS/index">Contact</a></li>|
+                        @*<li><a href="login.html">Track Order</a></li>*@ 
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                        <li> <a asp-controller="Product" asp-action="Show">Admin</a></li>
+                        }
+
+                    </ul>
+                </div>
+                <div class="top_left">
+                    <ul>
+                        @*<li class="top_link">Email:<a href="mailto@example.com">info(at)Mobilya.com</a></li>*@
+                        @*<li class="top_link"><a href="login.html">My Account</a></li>|*@
+                    </ul>
+                    <div class="social">
+                        <ul>
+                            <li><a href="https://www.facebook.com/FurnitureStore-106465081641721/?ref=pages_you_manage" target="_blank"><i class="facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/furniturestore109/" target="_blank"><i class="twitter"></i></a></li>
+                            <li><a href="#"><i class="dribble"></i></a></li>
+                            <li><a href="#"><i class="google"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="social">
+                        <partial name="_LoginPartial.cshtml" />
+                    </div>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <div class="header_top">
+        <div class="container">
+            <div class="logo">
+                <a href="/"><img src="~/images/logo.png" alt="" /></a>
+            </div>
+            <div class="header_right">
+                @*<div class="login">
+                        <a asp-controller="Account" asp-action="Login">LOGIN</a>
+                    </div>*@
+                <div class="cart box_1">
+                    @if (User.IsInRole("User"))
+                    {
+                        @*<a asp-controller="ShoppingCart"
+                           asp-action="index">*@
+                            <h3>
+                                @*@await Component.InvokeAsync("ShoppingCartSummary")*@
+                                <a asp-controller="Demo" asp-action="Index"> <img src="~/images/bag.png" alt=""></a>
+                            </h3>
+                        @*</a>*@
+                    }
+
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--cart-->
+    <!------>
+    <div class="mega_nav">
+        <div class="container">
+            <div class="menu_sec">
+                <!-- start header menu -->
+                <ul class="megamenu skyblue">
+                    <li ><a href="/">Home</a></li>
+                         @await Component.InvokeAsync("CategoryMenu")
+
+       
+                </ul>
+                <div class="search">
+                    <form asp-controller="Product" asp-action="Search">
+                        <input type="text"  name="str" value="" placeholder="Search...">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!------------------------------------------------------------------->
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    <!---footer--->
+    <div class="footer-w3l ">
+        <div class="container">
+            <div class="row footer-grids">
+                <div class=" col-md-6 col-lg-3 footer-grid">
+                    <h4 id="about">About </h4>
+                    <p>Everything that the modern home needs in terms of furniture and furnishings,and where we aspire to provide everything new in the world of furniture and home accessories that add a world of magic and beauty to the home</p>
+
+                </div>
+                <div class=" col-md-6 col-lg-3 footer-grid">
+                    <h4>My Account</h4>
+                    <ul>
+                        <li><a asp-area="Identity" asp-page="/Account/Logout">Checkout</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
+                        <li><a  asp-area="Identity" asp-page="/Account/Register"> Create Account </a></li>
+                    </ul>
+                </div>
+                <div class=" col-md-6 col-lg-3 footer-grid">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#Cat">Categories</a></li>
+                        @*<li><a href="codes.html">Short Codes</a></li>*@
+                        <li><a href="/ContactUS/index">Mail Us</a></li>
+                        
+                    </ul>
+                </div>
+                <div class=" col-md-6 col-lg-3 footer-grid foot">
+                    <h4>Contacts</h4>
+                    <ul>
+                        <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i><a href="#">E Comertown Rd, ,KFS, EGYPT</a></li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i><a href="#">1 599-033-5036</a></li>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a href="mailto:example@mail.com"> FurnitureStore@KFS.com</a></li>
+
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+
+        </div>
+    </div>
+    <!---footer--->
+    <!--copy-->
+    <div class="copy-section">
+        <div class="container">
+            <div class="copy-left">
+                <p>&copy; 2021 New Home Furniture. All rights reserved | Design by Kafr EL Shiekh Team</a></p>
+            </div>
+            <!-- <div class="copy-right">
+                <img src="images/card.png" alt=""/>
+            </div> -->
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--copy-->
+    <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+
+    <script src="js/script.js"></script>
+    @RenderSection("scripts", false)
+</body>
+
+</html>
